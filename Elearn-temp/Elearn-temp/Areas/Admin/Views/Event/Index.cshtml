@@ -1,10 +1,9 @@
-﻿@model IEnumerable<Course>
-
-
+﻿@model IEnumerable<Event>
 
 @{
     ViewData["Title"] = "Index";
 }
+
 
 
 
@@ -13,13 +12,12 @@
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
-        <h4 class="card-title text-center" style="margin-top:10px">Course</h4>
+        <h4 class="card-title text-center" style="margin-top:10px">Event</h4>
         <div class="table-responsive text-nowrap">
             <a class="btn btn-success text-white" asp-action="Create" style="float:right;">Create</a>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Image</th>
                         <th>Title</th>
                         <th>Status</th>
                         <th>Operations</th>
@@ -30,25 +28,17 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+
                             <td class="py-1">
 
 
-                              
-                                <img src="~/images/@item.CourseImages.FirstOrDefault(m=>m.IsMain)?.Image" style="width:70px;height:70px;" alt=" image" / />
 
+                               @item.Title
 
 
                             </td>
 
-                            <td>
-
-                                <div class="_title">
-
-                                    @item.Name
-
-                                </div>
-
-                            </td>
+                            
                             <td>
 
 

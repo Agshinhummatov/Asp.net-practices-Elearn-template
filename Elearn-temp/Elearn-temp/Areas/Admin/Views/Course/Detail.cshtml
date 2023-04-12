@@ -1,0 +1,27 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<div style="padding-left:300px" class="container my-5">
+
+    <h4>Image</h4>
+    <img style="width:300px" src="~/images/@Model.CourseImages.FirstOrDefault(m=>m.IsMain)?.Image" />
+
+    <h4>Title</h4>
+    <p>@Model.Name</p>
+    <h4>Description</h4>
+    <p>@Model.Description</p>
+    <h4>Price</h4>
+    <p>$@Model.Price</p>
+    <h4>Count Sale</h4>
+    <p>@Model.CountSale Sales </p>
+    <h4>Author Name</h4>
+    <p>@Model.Author.Name</p>
+
+    <a class="btn btn-info mt-3" asp-action="Index">Back</a>
+</div>
+
+

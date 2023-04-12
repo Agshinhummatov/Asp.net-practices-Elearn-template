@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Course>
-
+﻿@model IEnumerable<News>
 
 
 @{
@@ -7,13 +6,12 @@
 }
 
 
-
 <div style="padding-left:300px" class="container">
 
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
-        <h4 class="card-title text-center" style="margin-top:10px">Course</h4>
+        <h4 class="card-title text-center" style="margin-top:10px">News</h4>
         <div class="table-responsive text-nowrap">
             <a class="btn btn-success text-white" asp-action="Create" style="float:right;">Create</a>
             <table class="table">
@@ -33,8 +31,8 @@
                             <td class="py-1">
 
 
-                              
-                                <img src="~/images/@item.CourseImages.FirstOrDefault(m=>m.IsMain)?.Image" style="width:70px;height:70px;" alt=" image" / />
+
+                                <img src="~/images/@item.Image" style="width:70px;height:70px;" alt=" image" / />
 
 
 
@@ -44,7 +42,7 @@
 
                                 <div class="_title">
 
-                                    @item.Name
+                                    @item.Title
 
                                 </div>
 
@@ -80,3 +78,4 @@
     <!--/ Basic Bootstrap Table -->
 
 </div>
+

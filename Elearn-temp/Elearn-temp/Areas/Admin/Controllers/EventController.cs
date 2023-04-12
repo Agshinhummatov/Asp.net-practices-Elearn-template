@@ -5,28 +5,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Elearn_temp.Areas.Admin.Controllers
 {
-
-    [Area("Admin")]
-
-    public class CourseController : Controller
+      [Area("Admin")]
+    public class EventController : Controller
     {
-
-
+        
 
         private readonly AppDbContext _context;
 
-        public CourseController(AppDbContext context)
+        public EventController(AppDbContext context)
         {
             _context = context;
         }
 
-
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Course> courses = await _context.Courses.Include(m => m.CourseImages).Include(m => m.Author).Where(m => !m.SoftDelete).ToListAsync();
+            IEnumerable<Event> events = await _context.Events.Where(m => !m.SoftDelete).ToListAsync();
 
-            return View(courses);
+            return View(events);
         }
+
 
 
         [HttpGet]
@@ -36,22 +33,19 @@ namespace Elearn_temp.Areas.Admin.Controllers
             if (id == null) return BadRequest();
 
 
-            Course? courses = await _context.Courses.Include(m => m.CourseImages).Include(m => m.Author).FirstOrDefaultAsync(m => m.Id == id);
+            Event? events = await _context.Events.Where(m => !m.SoftDelete).FirstOrDefaultAsync(m => m.Id == id);
 
+            if (events is null) return NotFound();
 
-            if (courses is null) return NotFound();
-
-            return View(courses);
+            return View(events);
 
         }
+
 
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-
-
-
     }
 }
